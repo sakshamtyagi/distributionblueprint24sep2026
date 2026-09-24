@@ -1,0 +1,78 @@
+/* ================= FOOTER ================= */
+.site-footer {
+  border-top: 1px solid #eee;
+  background: #ffffff;
+  color: #555;
+  font-size: 14px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+}
+
+.footer-col h4,
+.footer-col h5 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+.footer-about p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #666;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-col ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  border-top: 1px solid #eee;
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+  text-decoration: none;
+}
+
+.footer-bottom .managed {
+  font-size: 10px;
+}
+
+.footer-bottom a {
+    font-size: 10px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    text-align: center;
+  }}
