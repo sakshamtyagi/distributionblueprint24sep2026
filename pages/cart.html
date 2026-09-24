@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - The Distribution Blueprint</title>
+   <link 
+   rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+   >
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .cart-container {
+            width: 80%;
+            margin: auto;
+            padding-top: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .item-details {
+            flex-grow: 2;
+        }
+        .item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        .item-quantity button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .total-container {
+            text-align: right;
+            padding: 20px 0;
+        }
+        .checkout-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" onclick="window.location.href='index.html';">
+            <img src="../logosaksham.png" alt="Logo">
+        </div>
+        <div class="youtube-icon">
+            <span class="color"><a href="https://www.youtube.com/sakshamtyagi"><i class="fab fa-youtube"></i></a>
+            </div></span>
+            <hr>
+        <nav>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul id="navMenu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="book.html">E-Book</a></li>
+                <li><a href="program.html">Program List</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="more.html">More</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="cart-container">
+    <h2>Your Cart</h2>
+
+    <!-- Cart Items -->
+    <div id="cart-items">
+        <!-- Dynamic content will be inserted here -->
+    </div>
+
+    <!-- Total Section -->
+    <div class="total-container">
+        <h3>Total: ₹<span id="total-price">0</span></h3>
+        <a href="" class="checkout-button" id="checkout-button">Proceed to Checkout</a>
+    </div>
+</div>
+<footer>
+
+    <div class="footer-container">
+        <div class="footer-title">
+            <h4>Quick Links</h4>
+        </div>
+        <div class="footer-links">
+            <div class="left">
+                <a href="FAQ.html">FAQ</a>
+                <a href="work.html">Work with Us</a>
+                <a href="donate.html">Donate</a>
+                <a href="feedback.html">Feedback</a>
+            </div>
+            <div class="center">
+                <a href="contact.html">Contact Us</a>
+                <a href="mission.html">Our Mission</a>
+                <a href="upcoming_projects.html">Upcoming Projects</a>
+                <a href="pay_methods">Payment Methods</a>
+            </div>
+            <div class="right">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="buying.html">Buying Policy</a>
+                <a href="help.html">Help</a>
+            </div>
+            <div class="footer-social"><br><h5>Connect on Social Media</h5>
+                <div> <a href="https://www.facebook.com/officialsakshamtyagi" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/officialsakshamtyagi" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/iamsakshamtyagi" target="_blank"><i class="fab fa-twitter"></i></a>
+               <a href="https://www.linkedin.com/in/iamsakshamtyagi" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.youtube.com/sakshamtyagi" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div></div>
+        <p>&copy; 2024 The Distribution Blueprint. All rights reserved.</p>
+    </div>
+</footer>
+
+
+<!-- Razorpay Integration -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- JavaScript -->
+<script>
+// Example Products in Cart
+let cartItems = [
+    { id: 1, name: "Product 1", price: 500, quantity: 1 },
+    { id: 2, name: "Product 2", price: 1000, quantity: 1 }
+];
+
+// Function to Render Cart Items
+function renderCartItems() {
+    const cartContainer = document.getElementById("cart-items");
+    cartContainer.innerHTML = "";
+    cartItems.forEach((item, index) => {
+        cartContainer.innerHTML += `
+            <div class="cart-item" data-id="${item.id}">
+                <div class="item-details">
+                    <p><strong>${item.name}</strong></p>
+                    <p>Price: ₹${item.price}</p>
+                </div>
+                <div class="item-quantity">
+                    <button onclick="decreaseQuantity(${index})">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="increaseQuantity(${index})">+</button>
+                </div>
+                <div class="item-total">
+                    ₹<span>${item.price * item.quantity}</span>
+                </div>
+            </div>
+        `;
+    });
+    updateTotal();
+}
+
+// Function to Update Total Price
+function updateTotal() {
+    const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+    document.getElementById("total-price").textContent = totalPrice;
+}
+
+// Function to Increase Quantity
+function increaseQuantity(index) {
+    cartItems[index].quantity++;
+    renderCartItems();
+}
+
+// Function to Decrease Quantity
+function decreaseQuantity(index) {
+    if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity--;
+    }
+    renderCartItems();
+}
+
+// Initialize Cart on Page Load
+renderCartItems();
+
+// Razorpay Checkout Integration
+document.getElementById('checkout-button').onclick = function (e) {
+    const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+
+    var options = {
+        "key": "rzp_live_871H2Jybngmseo", // Enter the Key ID generated from Razorpay Dashboard
+        "amount": totalPrice * 100, // Amount is in currency subunits. Default is INR. Hence, 100 refers to 100 paise
+        "currency": "INR",
+        "name": "The Distribution Blueprint",
+        "description": "Test Transaction",
+        "image": "https://yourwebsite.com/logo.png",
+        "handler": function (response){
+            alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+            // Call your order processing API here or redirect to a success page
+        },
+        "prefill": {
+            "name": "Customer Name",
+            "email": "customer@example.com",
+            "contact": "9999999999"
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+
+</body>
+</html>

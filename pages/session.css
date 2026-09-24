@@ -1,0 +1,137 @@
+
+
+
+
+/* General Section Styles */
+#book-session{
+    max-width: 900px;
+    margin-left: 20%;
+}
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: yellow;
+}
+
+#book-session p {
+    color: white;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 30px;
+}
+
+button:hover { background-color: #0056b3; }
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  
+}
+
+.modal-content {
+  background-color: #f9f9f9;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+ 
+}
+.modal-content h3 {
+     color: blaCK;
+}
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#internalSessionForm label { display:block; margin-top: 15px; }
+#internalSessionForm input, #internalSessionForm select {
+  width: 100%;
+  padding: 10px;
+  margin-top:5px;
+  border-radius: 4px;
+  border:1px solid #ccc;
+}
+
+/* Section 2 */
+#customer-data .customer-form {
+  background-color: block;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-left: 22%;
+}
+#customer-data p {
+    color: white;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+#customer-data iframe {
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.qr-box {
+    margin-left: 27%;
+}
+/* Responsive */
+@media(max-width:600px){
+    #book-session {
+    margin-left: 32px;
+    }
+  h3{ font-size:1.2em; }
+  #book-session p {
+      font-size: 0.9em;
+  }
+  button{ width:80%; padding:12px; 
+      
+  }
+  
+  #customer-data .customer-form {
+  margin-left: auto;
+  margin-right: auto;
+}
+#customer-data iframe {
+    width: 100%;
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.payment-section .qr-box {
+    margin-left: 13%;
+}
+#customer-data .customer-form p {
+    font-size: 0.9em;
+}
+    

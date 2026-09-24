@@ -1,0 +1,405 @@
+header {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  height: 130px;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.logo img {
+  width: 100px;
+  margin-bottom: 1px;
+}
+
+.youtube-icon {
+  display: flex;
+  justify-content: end;
+  color: red;
+  background-color: #000;
+  font-size: 40px;
+  margin-top: -60px;
+  margin-bottom: 10px;
+}
+
+.youtube-icon a {
+  color: red;
+  background-color: transparent;
+}
+.youtube-icon a:hover{
+  color: #0ff;
+}
+
+nav {
+  padding-top: 15px;
+  position: relative;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1001;
+ 
+}
+
+#navMenu {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+  
+}
+
+#navMenu li {
+  margin-right: 20px;
+}
+
+#navMenu li a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Georgia', serif;
+  
+}
+
+#navMenu li button {
+   background-color: #0ff;
+  color: black;
+  border: none;
+  padding: 8px 10px;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 100;
+  margin-bottom: 20px;
+   font-weight: bold;
+}
+
+#navMenu li a:hover {
+  color: #0ff;
+  font-size: 1.25rem; }
+  
+  #navMenu li button:hover {
+  background-color: #007bff;
+  color: white;
+  font-size: 0.8rem; }
+  
+    @keyframes blogColor {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+  footer {
+    background-color: #000;
+    color: gray;
+    padding: 10px 0;
+    text-align: center;
+    padding-top: 20px;
+}
+
+
+.hero {
+  text-align: center;
+  height: auto;
+  padding-bottom: 30px;
+  background: linear-gradient(to right, #1d0224, #2ecce8);
+  color: #fff;
+  margin-top: -4px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  
+}
+
+.hero p {
+  font-size: 20px;
+  padding: 0 50px;
+}
+
+.description {
+  text-align: center;
+  height: auto;
+  padding-bottom: 30px;
+}
+.description h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  
+}
+
+.description p {
+  font-size: 17px;
+  padding: 0 50px;
+  line-height: 1.6;
+}
+.footer-container {
+    max-width: 100%;
+    padding: 0 20px;
+    background-color: black;
+    margin: auto;
+    padding: auto;
+    padding-bottom: 10px;
+}
+.footer-title h4 {
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(255, 17, 17);
+    text-align: start;
+    margin-left: 30px;
+}
+
+.footer-container p {
+    color: #cccccc;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+.footer-mails {
+    
+    margin=left: 30px;
+}
+.footer-mails h6 {
+    font-size: 15px;
+    color: white;
+    text-align: left;
+    
+}
+.footer-mails p{
+    font-size: 12px;
+    line-height: 0.8px;
+    text-align: left;
+    font-style: italic;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+    background-color: black;
+    color: white;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.footer-links div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.footer-links a {
+    color: gray;
+    text-decoration: none;
+    margin: 5px 0;
+    font-size: 13px;
+    text-align: left;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.footer-social {
+    color: gray;
+    font-size: 15px;
+} 
+
+.footer-social div {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.footer-social a {
+    color: aqua;
+    background-color: transparent;
+    margin: 5px;
+    font-size: 25px;
+}
+footer p {
+    margin-top: 20px;
+    font-size: 0.875rem;
+    color: #ccc;
+    text-align: center; 
+}
+
+footer p a{
+  color: red;
+  text-decoration: none;
+}
+footer p a:hover{
+  color: #0ff;
+}
+
+
+
+
+/* General Section Styles */
+#book-session{
+    max-width: 900px;
+    margin-left: 20%;
+}
+#book-session h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: yellow;
+}
+
+#book-session p {
+    color: white;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 30px;
+}
+
+button:hover { background-color: #0056b3; }
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  
+}
+
+.modal-content {
+  background-color: #f9f9f9;
+  margin: 10% auto;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+ 
+}
+.modal-content h3 {
+     color: blaCK;
+}
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#internalSessionForm label { display:block; margin-top: 15px; }
+#internalSessionForm input, #internalSessionForm select {
+  width: 100%;
+  padding: 10px;
+  margin-top:5px;
+  border-radius: 4px;
+  border:1px solid #ccc;
+}
+
+/* Section 2 */
+#customer-data .customer-form {
+  background-color: block;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-left: 22%;
+}
+#customer-data p {
+    color: white;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+#customer-data iframe {
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.qr-box {
+    margin-left: 27%;
+}
+
+.ticker-container {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  padding: 5px 0;
+  box-sizing: border-box;
+  margin-bottom: -18px;
+   position: fixed;  
+   top: 0;               /* Sticks to the top of page */
+  z-index: 9999;   
+}
+
+.ticker-text {
+  display: inline-block;
+  white-space: nowrap;
+  color: #00e6ff;
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  animation: scroll-left 25s linear infinite;
+  text-decoration: none;
+   font-weight: 400;  
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(200%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* This will make specific parts bold & brighter */
+.highlight {
+  font-weight: 700;           /* super bold */
+  color: #00e6ff;             /* slightly brighter cyan */
+  letter-spacing: 0.3px;
+}
+
+
+.footer-mails {
+    
+    margin=left: 30px;
+}
+.footer-mails h6 {
+    font-size: 15px;
+    color: white;
+    text-align: left;
+    
+}
+.footer-mails p{
+    font-size: 12px;
+    line-height: 0.8px;
+    text-align: left;
+    font-style: italic;
+}
+

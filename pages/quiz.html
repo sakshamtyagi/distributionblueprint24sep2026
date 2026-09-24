@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - The Distribution Blueprint</title>
+    
+    <link rel="stylesheet" href="loader.css">
+    <script src="loader.js" defer></script>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2121547541402468"
+     crossorigin="anonymous"></script>
+     
+     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/f66113a2be93adfc39ec51eb1/91a0ce0e1a5b0be32ff983277.js");</script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #quiz-container {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            width: 60%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #question-container {
+            margin-bottom: 20px;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #submit-btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #result-container, #certificate-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #timer {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        #certificate-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #certificate-form input {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #certificate-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        #certificate-form button:hover {
+            background-color: #218838;
+        }
+
+        #certificate-canvas {
+            display: none;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <div id="timer"></div>
+        <div id="question-container">
+            <p id="question"></p>
+            <div id="options"></div>
+        </div>
+        
+        <button id="exit-btn" onclick="window.location.href='certificate.html'">Exit</button>
+    </div>
+    
+    <div id="result-container" style="display: none;">
+        <h2>Results</h2>
+        <p id="result-message"></p>
+        <button onclick="generateCertificate()">Generate Certificate</button>
+    </div>
+
+    <div id="certificate-container" style="display: none;">
+        <h2>Certificate of Completion</h2>
+        <form id="certificate-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+            <button type="button" onclick="downloadCertificate()">Download Certificate</button>
+        </form>
+    </div>
+
+    <canvas id="certificate-canvas" width="600" height="400"></canvas>
+
+    <script>
+        const questions = [
+            { question: "What is the primary purpose of music distribution?", options: ["Promotion", "Selling", "Streaming", "Uploading"], answer: 3 },
+            { question: "Which platform is commonly used for music streaming?", options: ["Spotify", "Instagram", "Whatsapp", "All of the above"], answer: 3 },
+            { question: "Content ID and Music Liecense is the same in music distribution?", options: ["No", "May be", "Yes", "Not sure"], answer: 2 },
+            { question: "What is a Music Distribution Aggregator?", options: ["A streaming service", "A record label", "A service that distributes music to various platforms", "A music production software"], answer: 2 },
+            { question: "Which of the following is NOT a music streaming service?", options: ["Apple Music", "Tidal", "Threads", "Spotify"], answer: 2 },
+            { question: "How many total chapters in this course?", options: ["32", "30", "33", "34"], answer: 2 },
+            { question: "What is the term for when an artist releases music exclusively on one platform?", options: ["Exclusive Release", "Worldwide Release", "Global Drop", "Platform-Exclusive"], answer: 3 },
+            { question: "Which of these is a major music distributor?", options: ["TuneCore", "Beatport", "SoundCloud", "Mixcloud"], answer: 0 },
+            { question: "What does the term 'Royalty' refer to in music distribution?", options: ["A payment for music sales", "A type of music genre", "A promotion method", "An exclusive contract"], answer: 0 },
+            { question: "What is an ISRC code used for?", options: ["Identifying music recordings", "Streaming analytics", "Artist promotion", "Track production"], answer: 0 },
+            { question: "Agreement is compulsory as an independent artist with Distributor?", options: ["May be", "No", "Not sure", "Yes"], answer: 1 },
+            { question: "Which revenue model involves artists receiving a percentage of sales from streaming services?", options: ["Subscription-based", "Ad-supported", "Pay-per-download", "Per-stream royalties"], answer: 3 },
+            { question: "What is the role of a 'Music Distributor'?", options: ["Promotes music on social media", "Handles physical music sales", "Distributes music to online platforms", "Manages artist bookings"], answer: 2 },
+            { question: "Which platform is designed for selling music directly to fans?", options: ["Bandcamp", "iTunes", "Spotify", "Deezer"], answer: 2 },
+            { question: "What is the primary advantage of using a music distributor?", options: ["Increased exposure", "Reduced production costs", "Free promotion", "Personalized music lessons"], answer: 0 },
+            { question: "What type of music license allows for commercial use?", options: ["Standard License", "Commercial License", "Creative Commons License", "Royalty-Free License"], answer: 1 },
+            { question: "Which of these platforms is known for its subscription-based music streaming?", options: ["Spotify", "Bandcamp", "SoundCloud", "iTunes"], answer: 0 },
+            { question: "What is the main financial benefit of independent distribution over record labels?",
+    options: [
+      "Artists keep 100% of their royalties",
+      "Artists get free marketing services",
+      "Artists are guaranteed playlist placements",
+      "Distributors pay for music production"
+    ],
+    answer: 0},
+            { question: "Which of the following platforms is NOT a digital music distributor?",
+    options: ["DistroKid", "CD Baby", "Spotify", "TuneCore"],
+    answer: 2},
+            {  question: "Which type of license is required for distributing a cover song legally?",
+    options: [
+      "Master license",
+      "Sync license",
+      "Mechanical license",
+      "Performance license"
+    ],
+    answer: 2 },
+            {  question: "Which of the following factors does NOT directly affect streaming royalties?",
+    options: [
+      "Number of streams",
+      "Listener's location",
+      "Artwork quality",
+      "Streaming platform payout rate"
+    ],
+    answer: 2 },
+            {  question: "Which type of revenue is collected when a song is played in a public place like a restaurant?",
+    options: [
+      "Mechanical royalties",
+      "Sync royalties",
+      "Performance royalties",
+      "Streaming royalties"
+    ],
+    answer: 2 },
+            {  question: "What is a key difference between a record label and a music distributor?",
+    options: [
+      "A distributor owns the rights to the music, but a label does not",
+      "A label signs artists and funds their projects, while a distributor only distributes music",
+      "A distributor helps in artist branding, while a label only handles distribution",
+      "A label is free to use, while a distributor charges fees"
+    ],
+    answer: 1 },
+            {  question: "What is a common requirement for getting music on platforms like Spotify and Apple Music?",
+    options: [
+      "A physical CD release",
+      "A professional music video",
+      "A distribution service",
+      "A government-issued music license"
+    ],
+    answer: 2},
+            {  question: "Which of the following is NOT a common way to monetize music?",
+    options: [
+      "Streaming royalties",
+      "YouTube Content ID",
+      "Stock music licensing",
+      "Music NFT trading"
+    ],
+    answer: 3 }
+        ];
+        
+        function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        // swap
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+    
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+        let totalQuizTimer;
+        let questionTimer;
+        const QUESTION_TIME = 60; // 1 minute for each question
+        const TOTAL_TIME = 25 * 60; // 25 minutes in seconds
+        let timeLeftForQuestion = QUESTION_TIME;
+    
+        function startTotalTimer() {
+            const timerElement = document.getElementById('timer');
+            
+    
+            totalQuizTimer = setInterval(() => {
+                const minutes = Math.floor(totalTimeLeft / 60);
+                const seconds = totalTimeLeft % 60;
+                timerElement.textContent = `Total Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    
+                if (totalTimeLeft <= 0) {
+                    clearInterval(totalQuizTimer);
+                    showResults();
+                } else {
+                    totalTimeLeft--;
+                }
+            }, 1000);
+        }
+    
+        function startQuestionTimer() {
+            timeLeftForQuestion = QUESTION_TIME;
+            const timerElement = document.getElementById('timer');
+            
+            questionTimer = setInterval(() => {
+                const minutes = Math.floor(timeLeftForQuestion / 60);
+                const seconds = timeLeftForQuestion % 60;
+                timerElement.textContent = `Question Time: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    
+                if (timeLeftForQuestion <= 0) {
+                    clearInterval(questionTimer);
+                    nextQuestion();
+                } else {
+                    timeLeftForQuestion--;
+                }
+            }, 1000);
+        }
+    
+        function showQuestion() {
+            const question = questions[currentQuestionIndex];
+            document.getElementById('question').textContent = question.question;
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.onclick = () => selectOption(index);
+                optionsContainer.appendChild(button);
+            });
+            startQuestionTimer();
+        }
+    
+        function selectOption(selectedIndex) {
+            const question = questions[currentQuestionIndex];
+            if (selectedIndex === question.answer) {
+                correctAnswers++;
+            }
+            nextQuestion();
+        }
+    
+        function nextQuestion() {
+            clearInterval(questionTimer);
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+    
+        function showResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('result-container').style.display = 'block';
+            document.getElementById('result-message').textContent = `You got ${correctAnswers} out of ${questions.length} questions correct!`;
+    
+            if (correctAnswers >= 20) {
+                document.querySelector("#result-container button").style.display = 'block';
+            } else {
+                document.querySelector("#result-container button").style.display = 'none';
+            }
+        }
+    
+        function generateCertificate() {
+            document.getElementById('result-container').style.display = 'none';
+            document.getElementById('certificate-container').style.display = 'block';
+        }
+    
+//         function downloadCertificate() {
+//     const name = document.getElementById('name').value.trim();
+//     if (name) {
+//         const canvas = document.getElementById('certificate-canvas');
+//         const ctx = canvas.getContext('2d');
+//         canvas.width = 1000; // Increased width for better layout
+//         canvas.height = 650; // Increased height to accommodate all content
+    
+//         // Background gradient
+//         let gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+//         gradient.addColorStop(0, "#f5f5f5");
+//         gradient.addColorStop(1, "#e0e0e0");
+    
+//         ctx.fillStyle = gradient;
+//         ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+//         // Border
+//         ctx.lineWidth = 10;
+//         ctx.strokeStyle = "#2e6b8e"; // color for a classy look
+//         ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
+    
+//         // Title: Certificate of Completion
+//         ctx.font = "bold 55px 'Arial'";
+//         ctx.textAlign = "center";
+//         ctx.fillStyle = "#2e6b8e"; // Dark text
+//         ctx.shadowColor = "rgba(0,0,0,0.2)";
+//         ctx.shadowBlur = 5;
+//         ctx.fillText("Certificate of Completion", canvas.width / 2, 90);
+    
+//         // Subtitle: This is to certify that
+//         ctx.font = "italic 28px 'Arial'";
+//         ctx.fillText("The Distribution Blueprint", canvas.width / 2, 160);
+    
+//         // Name of the person
+//         ctx.font = "bold 45px 'Arial'";
+//         ctx.fillStyle = "#000000"; // Light blue color for the name
+//         ctx.fillText(name, canvas.width / 2, 230);
+    
+//         // Line Break and Wrapped Text: Course Completion Info
+//         ctx.font = "italic 28px 'Arial'";
+//         ctx.fillStyle = "#555";
+//         ctx.fillText("Has successfully completed the Music Distribution Course.", canvas.width / 2, 300);
+//         ctx.fillText("The knowledge gained will aid in distribution success!", canvas.width / 2, 340);
+    
+//         // Adjust startY to properly position "Awarded by" and "Date of Completion"
+//         const startY = 400; // Increased space for proper placement
+    
+//         // Acknowledgment: Awarded by Saksham Tyagi
+//         ctx.font = "italic bold 26px 'Arial'";
+//         ctx.fillStyle = "#2e6b8e";
+//         ctx.fillText("Awarded by Saksham Tyagi", canvas.width / 2, startY);
+
+//         // Footer: Date of completion
+//         const date = new Date().toLocaleDateString();
+//         ctx.font = " 20px 'Arial'";
+//         ctx.fillStyle = "#444";
+//         ctx.fillText("Date of Completion: " + date, canvas.width / 2, startY + 40);
+    
+//         // Logo or icon (optional)
+//         const logo = new Image();
+//         logo.src = '../media/logo_certificate.png'; // Example logo URL
+//         logo.onload = function () {
+//             const logoWidth = 200 * 0.98; // Decrease width by 2%
+//             const logoHeight = 100 * 1.02; // Increase height by 2%
+//             ctx.drawImage(logo, canvas.width / 2 - logoWidth / 2, canvas.height - 180, logoWidth, logoHeight); 
+
+//             // Website footer (adjusted below the logo)
+//             ctx.font = "bold 20px Arial";
+//             ctx.fillStyle = "0000";
+//             ctx.fillText("www.distributionblueprint.in", canvas.width / 2, canvas.height - 40);
+
+//             // Trigger the download action
+//             const link = document.createElement('a');
+//             link.href = canvas.toDataURL();
+//             link.download = 'certificate_of_completion.png';
+//             link.click();
+//         };
+//     } else {
+//         alert("Please enter a name.");
+//     }
+// }
+
+function downloadCertificate() {
+    const name = document.getElementById('name').value.trim().toUpperCase();
+
+    if (!name) {
+        alert("Please enter a name.");
+        return;
+    }
+
+    const canvas = document.getElementById('certificate-canvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = 1200;
+    canvas.height = 700;
+
+   // 🎨 BACKGROUND (soft premium gradient)
+let bg = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+bg.addColorStop(0, "#f8fafc");
+bg.addColorStop(1, "#eef2f7");
+ctx.fillStyle = bg;
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+// ✨ subtle radial highlight (premium depth)
+let glow = ctx.createRadialGradient(
+    canvas.width / 2,
+    canvas.height / 2,
+    100,
+    canvas.width / 2,
+    canvas.height / 2,
+    600
+);
+glow.addColorStop(0, "rgba(255,255,255,0.6)");
+glow.addColorStop(1, "rgba(255,255,255,0)");
+
+ctx.fillStyle = glow;
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+// 🧊 WATERMARK (👉 YAHI ADD KARNA HAI)
+const watermark = new Image();
+watermark.src = '../media/centerlogo.png';
+
+watermark.onload = function () {
+    ctx.globalAlpha = 0.05;
+    ctx.drawImage(watermark, canvas.width/2 - 200, canvas.height/2 - 200, 400, 400);
+    ctx.globalAlpha = 1;
+
+    // 👉 IMPORTANT: baaki drawing isi ke andar hona chahiye
+    drawCertificateContent();
+};
+
+ctx.globalAlpha = 1;
+
+    // 🟦 CLEAN BORDER (fixed spacing)
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "#1e293b";
+    ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
+
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#d4af37";
+    ctx.strokeRect(60, 60, canvas.width - 120, canvas.height - 120);
+
+    ctx.textAlign = "center";
+
+    // 🏆 TITLE
+    ctx.font = "bold 44px Georgia";
+    ctx.fillStyle = "#0f172a";
+    ctx.fillText("CERTIFICATE OF COMPLETION", canvas.width / 2, 100);
+
+    // subtitle
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "#555";
+    ctx.fillText("This certificate is proudly presented to", canvas.width / 2, 160);
+
+    // 👤 NAME
+    ctx.font = "bold 50px Georgia";
+    ctx.fillStyle = "#000";
+    ctx.fillText(name, canvas.width / 2, 230);
+
+    // underline
+    ctx.beginPath();
+    ctx.moveTo(canvas.width / 2 - 250, 250);
+    ctx.lineTo(canvas.width / 2 + 250, 250);
+    ctx.strokeStyle = "#d4af37";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // 📘 COURSE TEXT
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "#444";
+    ctx.fillText("has successfully completed the course", canvas.width / 2, 300);
+
+    ctx.fillStyle = "#1e293b";
+ctx.font = "bold 30px Arial";
+ctx.fillText("The Distribution Blueprint", canvas.width / 2, 340);
+
+// highlight line
+ctx.beginPath();
+ctx.moveTo(canvas.width / 2 - 180, 355);
+ctx.lineTo(canvas.width / 2 + 180, 355);
+ctx.strokeStyle = "#d4af37";
+ctx.lineWidth = 2;
+ctx.stroke();
+
+    // 📊 SCORE (clean readable)
+    ctx.font = "17px Arial";
+    ctx.fillStyle = "#333";
+    ctx.fillText(
+        `Achieved scored ${correctAnswers} out of ${questions.length} in the final assessment`,
+        canvas.width / 2,
+        380
+    );
+
+    // 📅 DATE
+    const date = new Date().toLocaleDateString();
+    ctx.textAlign = "left";
+    ctx.font = "18px Arial";
+    ctx.fillText("Date: " + date, 120, 540);
+
+    // 🏷️ CERT ID
+    ctx.textAlign = "right";
+    const certId = "DB-" + Date.now();
+    ctx.fillText("Certificate ID: " + certId, canvas.width - 120, 540);
+
+    // 🔧 IMAGE RATIO FIX FUNCTION
+    function drawImageProper(img, centerX, centerY, maxW, maxH) {
+        const ratio = Math.min(maxW / img.width, maxH / img.height);
+        const w = img.width * ratio;
+        const h = img.height * ratio;
+        ctx.drawImage(img, centerX - w / 2, centerY - h / 2, w, h);
+    }
+
+    // 🖼️ LOAD ALL IMAGES (proper flow)
+    const logoMain = new Image();
+    const logoRight = new Image();
+    const logoLeft = new Image();
+    const signature = new Image();
+
+    logoMain.src = '../media/backimage.jpeg';
+    logoRight.src = '../media/STlogo.png';
+    logoLeft.src = '../media/centerlogo.png';
+    signature.src = '../media/Signaturepng.png';
+
+    let loaded = 0;
+    function checkLoad() {
+        loaded++;
+        if (loaded === 4) drawAll();
+    }
+
+    logoMain.onload = checkLoad;
+    logoRight.onload = checkLoad;
+    logoLeft.onload = checkLoad;
+    signature.onload = checkLoad;
+
+    function drawAll() {
+
+        // 🎵 CENTER IMAGE (no stretch)
+        drawImageProper(logoMain, canvas.width / 2, 470, 180, 100);
+
+        // 🏢 TOP LEFT LOGO
+        drawImageProper(logoLeft, canvas.width - 260, 610, 120, 60);
+
+        // 🏁 BOTTOM RIGHT LOGO
+        drawImageProper(logoRight, canvas.width - 140, 610, 140, 70);
+
+        // ✍️ SIGNATURE IMAGE (FIXED POSITION)
+        drawImageProper(signature, 200, 600, 180, 70);
+
+        ctx.textAlign = "left";
+        ctx.font = "16px Arial";
+        ctx.fillText("Authorized Signature", 120, 630);
+
+        // 🌐 WEBSITE (VISIBLE FIXED)
+        ctx.textAlign = "center";
+        ctx.font = "bold 18px Arial";
+        ctx.fillStyle = "#000";
+        ctx.fillText("www.Distributionblueprint.in", canvas.width / 2, 665);
+
+        // download
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL();
+        link.download = 'certificate.png';
+        link.click();
+    }
+}
+
+// Utility function for text wrapping
+function wrapText(ctx, text, startY, maxWidth) {
+    let words = text.split(' ');
+    let line = '';
+    let lines = [];
+
+    for (let i = 0; i < words.length; i++) {
+        let testLine = line + words[i] + ' ';
+        let testWidth = ctx.measureText(testLine).width;
+        if (testWidth > maxWidth) {
+            lines.push(line);
+            line = words[i] + ' ';
+        } else {
+            line = testLine;
+        }
+    }
+    lines.push(line);
+
+    // Now center-align the text for each line
+    for (let j = 0; j < lines.length; j++) {
+        let lineWidth = ctx.measureText(lines[j]).width;
+        ctx.fillText(lines[j], ctx.canvas.width / 2 - lineWidth / 2, startY + j * 35); // Center aligned text
+    }
+
+    return lines;
+}
+
+// Utility function for text wrapping
+function wrapText(ctx, text, x, y, maxWidth) {
+    let words = text.split(' ');
+    let line = '';
+    let lines = [];
+
+    for (let i = 0; i < words.length; i++) {
+        let testLine = line + words[i] + ' ';
+        let testWidth = ctx.measureText(testLine).width;
+        if (testWidth > maxWidth) {
+            lines.push(line);
+            line = words[i] + ' ';
+        } else {
+            line = testLine;
+        }
+    }
+    lines.push(line);
+
+    // Now center-align the text for each line
+    for (let j = 0; j < lines.length; j++) {
+        let lineWidth = ctx.measureText(lines[j]).width;
+        ctx.fillText(lines[j], x - lineWidth / 2, y + j * 30); // Corrected to center the line
+    }
+
+    return lines;
+}
+
+    
+        function exitQuiz() {
+            clearInterval(totalQuizTimer);
+            clearInterval(questionTimer);
+            alert("You have exited the quiz");
+            location.reload();
+        }
+    
+        // Start quiz on load
+        window.onload = function() {
+             shuffleArray(questions);
+            startTotalTimer();
+            showQuestion();
+        };
+    </script>
+    
+     <div class="page-loader">
+  <div class="brand-loader">
+    <div class="music-wave">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <p class="loading-text">Loading your vibe…</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1022 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+       
+
+
+        body {
+            background-color: #000000;
+            color: #333;
+        
+        }
+        
+        header {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  height: 130px;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.logo img {
+  width: 100px;
+  margin-bottom: 1px;
+}
+.youtube-icon {
+  display: flex;
+  justify-content: end;
+  color: red;
+  background-color: #000;
+  font-size: 40px;
+  margin-top: -60px;
+  margin-bottom: 10px;
+}
+
+.youtube-icon a {
+  color: red;
+  background-color: transparent;
+}
+.youtube-icon a:hover{
+    color: #0ff;
+}
+
+nav {
+  padding-top: 15px;
+  position: relative;
+  
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 1001;
+  
+ 
+}
+
+#navMenu {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+  
+}
+
+#navMenu li {
+  margin-right: 20px;
+}
+
+#navMenu li a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Georgia', serif;
+  
+}
+
+#navMenu li button {
+   background-color: #0ff;
+  color: black;
+  border: none;
+  padding: 8px 10px;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 100;
+  margin-bottom: 20px;
+   font-weight: bold;
+} 
+
+#navMenu li a:hover {
+  color: #0ff;
+  font-size: 1.25rem; }
+  
+  #navMenu li button:hover {
+  background-color: #007bff;
+  color: white;
+  font-size: 0.8rem; }
+        
+        @keyframes blogColor {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+        
+
+        .home {
+            text-align: center;
+            height: 1000px;
+            background: linear-gradient(to right, #1d0224, #2ecce8);
+            color: #fff;
+            position: relative; 
+            overflow: hidden;
+            margin-top: -4px;
+        }
+        
+
+
+        .home h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            margin-top: 50px;
+        }
+
+        .home {
+            font-size: 1.5rem;
+            
+        }
+
+        .home img {
+            position: absolute;
+            bottom: 80px;
+            width: 40%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .rotate {
+            animation: rotateClockwise 10s linear infinite;
+            border-radius: 100%;
+            width:20%;
+            right: 47%;
+            position: absolute;
+            z-index: 1;
+        }
+
+        @keyframes rotateClockwise {
+            from {
+                transform: rotate(360deg);
+            }
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+        .home img.front {
+            width: 50%;
+            right: 10%;
+            z-index: 2;
+            bottom: 50px;
+        }
+        .animated-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+    white-space: nowrap;
+    position: relative;
+    animation: moveText 10s linear infinite;
+}
+
+@keyframes moveText {
+    0% {
+        left: 100%;
+    }
+    100% {
+        left: -100%;
+    }
+}
+        .course {
+            padding: 20px 40px;
+            width: 100%;
+            color: white;
+            background-color: black;
+            
+            /* padding-bottom: 70px; */
+        }
+        .course p {
+            font-size: 15px;
+            padding: 20px 20px;
+            line-height: 1.6;
+            font-family: 'Georgia', serif;
+           
+        }
+    .course p a {
+        color: white;
+        text-decoration: none;
+        background-color: red;
+        
+        
+    }
+    .course p a i {
+        font-size: 70px;
+        
+    }
+    .pdf {
+        background-color: red;
+        padding: 15px 15px;
+        text-decoration: solid;
+        font-weight: bold;
+        font-size: 15px;
+        border-radius: 15px;
+        text-transform: uppercase;
+        
+    }
+        .course h1{
+            text-align: center;
+            color: aqua;
+            font-size: 3rem;
+            margin-top: 10px;
+        }
+        .course h2 {
+            width: 100%;
+            font-size: 1.5rem;
+            text-align: center;
+            
+            border-radius: 5%;
+            color: rgba(215, 252, 6, 0.781);
+            font-family: 'Georgia', serif;
+        }
+        .custom-font {
+            font-size: 15px;
+            font-family: 'Georgia', serif;
+        }
+        
+        .course-title {
+            font-size: 25px;
+            color: darkorange;
+            text-shadow: 0 5px 10px #000;
+            border-radius: 50px;
+            font-family: 'Georgia', serif;
+        }
+        .course-heading {
+            font-size: 20px;
+            font-family: 'Georgia', serif;
+            
+        }
+        .course-by {
+            font-size: 25px;
+            font-family: 'Georgia', serif;
+        }
+        .offerings {
+            background-color: #000;
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .offerings h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .product {
+            color: white;
+            width: 22%;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+            background-color: rgb(11, 88, 204);
+box-shadow: 0 0 18px rgba(255, 215, 0, 0.9);
+animation: shadowGlow 2s infinite alternate;
+        }
+        @keyframes shadowGlow {
+  0%   { box-shadow: 0 0 18px rgba(0, 128, 255, 0.9); }   /* blue */
+  25%  { box-shadow: 0 0 18px rgba(255, 0, 128, 0.9); }   /* pink */
+  50%  { box-shadow: 0 0 18px rgba(255, 165, 0, 0.9); }   /* orange */
+  75%  { box-shadow: 0 0 18px rgba(0, 255, 200, 0.9); }   /* teal */
+  100% { box-shadow: 0 0 18px rgba(255, 255, 0, 0.9); }   /* yellow */
+}
+
+.product h3{
+    font-size: 1.25rem;
+    margin-top: 7px;
+    
+}
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product .new-arrival {
+            background-color: red;
+            color: #fff;
+            padding: 5px 10px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 0.99rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+.channel-stats {
+    background-color: black;
+    text-align: center;
+    font-size: 30px;
+    color: rgb(41, 41, 51);
+}
+.channel-stats h2 {
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+}
+        .numbers {
+    display: flex;
+    gap: 80px;
+    text-align: center;
+    height: 200px;
+    background-image: url(media/statsbackground.png);
+   
+}
+.stat-box {
+    margin-left: auto;
+    margin-top: 4%;
+    margin-right: auto;
+}
+.stat-box h3 {
+    margin: 0;
+    font-size: 30px;
+    color: white;
+    font-family: 'Georgia', Times, serif;
+}
+
+.stat-box p {
+    margin: 10px 0 0;
+    font-size: 24px;
+    color: yellow;
+    font-family: 'Georgia', Times, serif;
+    
+}
+
+ .article {
+        background-color: black;
+        color: white;
+        padding-top: 5px;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 60px;
+        width: 100%;
+        text-align: center;
+    }
+    .article p{
+        font-size: 15px;
+            padding: 20px 20px;
+            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            text-align: center;
+    }
+    .article ul {
+        line-height: 1.6rem;
+        padding: 20PX 40PX;
+        text-align: left;
+        display: inline-block;
+        
+    }
+    .article h2 {
+        font-size: 1.7rem;
+        padding: 0 15PX;
+        color: rgba(255, 0, 242, 0.863);
+        text-align: center;
+        text-transform: uppercase;
+            background-image: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #00ffee, #007bff, #ff00ff);
+            background-size: 400% 400%;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: gradientAnimation 5s infinite linear;
+    }
+   
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    .article h3 {
+        font-size: 1.2rem;
+        padding: 20PX 15PX;
+        color: red;
+    }
+    .div {
+        text-align: left;
+    }
+    .div p{
+        text-align: left;
+    }
+    .article h4 {
+        font-size: 1rem;
+        color: rgb(0, 255, 136);
+        text-align: left;
+        padding-left: 10px;
+    }
+    .article h5 {
+        padding-top: 20px;
+        font-size: 1.2rem;
+        color: rgba(0, 162, 255, 0.897);
+    }
+
+        .reviews {
+    background-image: url(media/reviewbackground.png);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.reviews h2 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: aqua;
+}
+
+.review {
+    background-color: #fff;
+    padding: 15px;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 10px;
+    font-size: 13px;
+    font-style: italic;
+    width: 28%; /* Slightly smaller width */
+    display: inline-block;
+
+/* Animation styles */
+opacity: 0; /* Start invisible */
+  transform: translateY(20px); /* Start slightly below */
+  transition: opacity 1s ease, transform 1s ease; /* Smooth fade-in */
+}
+
+.review.visible {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Move to original position */
+}
+footer {
+    background-color: #000;
+    color: gray;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.footer-title h4 {
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(255, 17, 17);
+    text-align: start;
+    margin-left: 30px;
+}
+
+.footer-mails {
+    
+    margin=left: 30px;
+}
+.footer-mails h6 {
+    font-size: 15px;
+    color: white;
+    text-align: left;
+    
+}
+.footer-mails p{
+    font-size: 12px;
+    line-height: 0.8px;
+    text-align: left;
+    font-style: italic;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    width: 100%;
+}
+
+.footer-links div {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.footer-links a {
+    color: gray;
+    text-decoration: none;
+    margin: 5px 0;
+    font-size: 13px;
+    text-align: left;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.footer-social {
+    color: gray;
+    font-size: 15px;
+} 
+
+.footer-social div {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.footer-social a {
+    color: aqua;
+    background-color: transparent;
+    margin: 5px;
+    font-size: 25px;
+}
+footer p {
+    margin-top: 20px;
+    font-size: 0.875rem;
+    color: #ccc;
+    text-align: center;
+}
+footer p a {
+    color: red;
+    text-decoration: none;
+}
+footer p a:hover {
+    color: #0ff;
+}
+ /* Mobile styles */
+       
+ @media (max-width: 768px) {
+    .home {
+        height: 700px;
+    }
+    .home h1 {
+        margin-top: 1px;
+        font-size: 55px;
+
+    }
+    .home p {
+        font-size: 25px;
+
+    }
+    .home img {
+        margin-bottom: 20px;
+        margin-right: 20px;
+    }
+    .home img.rotate {
+        width: 310px;
+    }
+    .course h1{
+        font-size: 45px; 
+    }
+
+    .course h2{
+        font-size: 18px;
+        text-align: center;
+        width: 60%;
+        margin: auto;
+        
+    }
+
+.text-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.animated-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    white-space: nowrap;
+    position: relative;
+    animation: moveText 10s linear infinite;
+    
+}
+    
+    .course p {
+        font-size: 15px;
+        text-align: center;
+        width: 100%;
+        text-align: left;
+    }
+    .custom-font {
+        font-size: 18px;
+        text-align: justify;
+    }
+    .course-title {
+            font-size: 22px;
+            
+        }
+        .course-heading {
+            font-size: 20px;
+        }
+        .course-by {
+            font-size: 20px;
+        }
+              
+        .offerings {
+            background-color: #000;
+            color: #fff;
+            padding: auto;
+            text-align: center;
+        }
+
+        .offerings h2 {
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            
+        }
+        .product {
+            width: 20%;
+        }
+.product h3{
+    font-size: 1rem;
+}
+        
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .product .new-arrival {
+            background-color: red;
+            color: #fff;
+            padding: 5px 10px;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            font-size: 0.69rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .channel-stats {
+    background-color: black;
+    text-align: center;
+    font-size: 18px;
+    color: rgb(41, 41, 51);
+    padding-bottom: 50px;
+}
+.channel-stats h2 {
+    margin-bottom: 30px;
+    font-size: 40px;
+}
+    .numbers {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 150px 300px;
+        margin-left: -60px;
+    }
+.stat-box {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 50px;
+}
+    .stat-box p {
+        font-size: 20px;
+    }
+      .article {
+        padding: 12px 12px;
+        }
+    .article p{
+        font-size: 10px;
+            
+    }
+    .article ul {
+        font-size: 10px;
+        
+    }
+    .article h2 {
+        font-size: 1.1rem;
+        
+    }
+   
+    .article h3 {
+        font-size: 1rem;
+        
+    }
+    
+    .article h4 {
+        font-size: 0.9rem;
+        
+    }
+    .article h5 {
+        
+        font-size: 12px;
+        
+    }
+            .reviews h2 {
+        font-size: 30px;
+    }
+
+    .review {
+        width: 90%; /* Smaller width on tablet-sized screens */
+        font-size: 12px;
+    }}
+    
+    
+@media (max-width: 769px) {
+.channel-stats {
+    padding-bottom: 200px;
+    
+}}
+
+@media (max-width: 426px) 
+{
+
+    #navMenu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #000;
+                width: 100%;
+                padding: 10px 20px;
+                z-index: 1000;
+            }
+
+            #navMenu.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            #navMenu li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+          
+            .logo img{
+        width: 90px;
+        margin-left: -20px;
+    }
+    
+     #navMenu li button {
+    background-color: #0ff;   /* mobile me color badal gaya */
+    color: black;
+    padding: 12px 15px;       /* thoda bada padding */
+    width: 100%;              /* full width button */
+    font-size: 16px;          /* thoda bada text */
+     font-weight: bold;
+  }
+
+    .youtube-icon {
+        font-size: 30px;
+        padding-top: 12px;
+    }
+    .home {
+        height: 350px;
+    }
+    .home h1 {
+        margin-top: -1px;
+        font-size: 25px;
+
+    }
+    .home p {
+        font-size: 10px;
+
+    }
+    .home img {
+        margin-bottom: -20px;
+        margin-right: 15px;
+    }
+    .home img.rotate {
+       width: 120px;
+    }
+    .course h1{
+        font-size: 23px;
+
+    }
+    .course h2{
+        font-size: 11px;
+        text-align: center;
+        width: 70%;
+        margin: auto;
+        margin-bottom: -10px;
+    }
+
+.course {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: -45px;
+}
+
+.animated-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: red;
+    white-space: nowrap;
+    position: relative;
+    animation: moveText 10s linear infinite;
+    
+}
+    .course p {
+        font-size: 10px;
+        padding-left: 1px;
+        width: 100%;
+       margin: auto;
+          
+    }
+    .custom-font {
+        font-size: 12px;
+        text-align: center;
+    }
+    .course-title {
+            font-size: 16px;
+            
+        }
+        .course-heading {
+            font-size: 14px;
+        }
+        .course-by {
+            font-size: 13px;
+        }
+        
+        .course p a i {
+        font-size: 40px;
+    }
+        .pdf {
+            font-size: 10px;
+           margin: 1px 1px;
+           text-transform: uppercase;
+           font-weight: bold;
+        }
+              
+        .offerings {
+            background-color: #000;
+            color: #fff;
+            padding: auto;
+            text-align: center;
+        }
+
+        .offerings h2 {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .product {
+            
+            color: white;
+            width: 90%;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+            
+        }
+.product h3{
+    font-size: 1rem;
+}
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .product .new-arrival {
+            background-color: red;
+            color: #fff;
+            padding: 5px 10px;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            font-size: 0.69rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .channel-stats {
+    background-color: black;
+    text-align: center;
+    font-size: 18px;
+    color: rgb(41, 41, 51);
+    padding-bottom: 100px;
+    
+}
+.channel-stats h2 {
+    margin-bottom: 60px;
+    font-size: 30px;
+}
+        .numbers {
+         padding: 100px;   
+    width: auto;
+    background-color: black;
+    display: flex;
+    justify-content: center; /* Centers the stat-box horizontally within the numbers container */
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column; /* Ensures that h3 and p are stacked vertically */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 60px;
+}
+
+.stat-box h3 {
+    font-size: 20px;
+    color: white;
+    margin: 0; /* Remove extra margin */
+    
+}
+
+.stat-box p {
+    margin: 10px 0 0; /* Margin from the top for spacing */
+    font-size: 15px;
+    color: yellow;
+}
+
+
+    .reviews h2 {
+        font-size: 20px; /* Smaller heading */
+    }
+
+    .review {
+        width: 90%; /* Almost full width on mobile */
+        font-size: 10px;
+        padding: 10px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links div {
+        margin: 5px 0;
+    }
+.footer-container p {
+    font-size: 10px;
+}
+    .footer-title h4 {
+        font-size: 20px;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .footer-links a {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .footer-social div {
+        flex-direction: row;
+    }
+
+    .footer-social a {
+        font-size: 20px;
+        margin: 10px 0;
+        padding: 0 5px;
+        margin-left: 2px;
+    }
+    
+    .footer-mails h6 {
+        font-size: 12px;
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .footer-mails p {
+        font-size: 12px;
+        text-align: center;
+    }
+    
+}
+@media (min-width: 1440px) {
+    .home {
+        height: 1120px;
+    }
+    
+}
+@media (min-width: 2560px) {
+    .home {
+        height: 100vh;
+    }
+    
+}
+
+
